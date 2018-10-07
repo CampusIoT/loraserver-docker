@@ -1,8 +1,16 @@
 # Additional containers for loraserver.io
 
-* nodered
+## Containers
+* pgadmin
 * influxdb
 * telegraf
-* kapacitor
+* nodered
 * grafana
 * chronograf
+* kapacitor
+
+## Run the composition
+docker-compose -f docker-compose.yml -f extension.yml up
+
+## Stop the composition
+docker-compose -f docker-compose.yml -f extension.yml down
