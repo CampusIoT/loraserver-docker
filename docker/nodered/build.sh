@@ -1,1 +1,1 @@
-docker build -f Dockerfile -t ls_nodered:latest .
+docker build -f Dockerfile -t campusiot/nodered:latest .
