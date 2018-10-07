@@ -10,9 +10,11 @@
 * kapacitor
 
 # TODO List
-* pgdump (cron)
+* pgdump (cron) see https://github.com/istepanov/docker-pg_dump
 * nginx with letsencryt
 * nodered plugins
+* fail2ban
+* glpi
 
 ## Run the composition
 docker-compose -f docker-compose.yml -f extension.yml up

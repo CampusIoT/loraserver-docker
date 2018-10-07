@@ -18,14 +18,16 @@ services:
     image: influxdb
     volumes:
        - ./configuration/influxdb:/var/lib/influxdb
-       - ./data/influxdb:/
+       - ./data/influxdb:/data
     ports:
       - 8086:8086
       - 8083:8083
     restart: unless-stopped
 
   nodered:
-    image: nodered/node-red-docker
+    build:
+      context: ./docker/nodered
+    #image: nodered/node-red-docker
     links:
       - influxdb:influxdb
     environment:
@@ -36,13 +38,6 @@ services:
     ports:
       - 1880:1880
     restart: unless-stopped
-#npm install node-red-contrib-influxdb
-#npm install node-red-node-mongodb
-#npm install node-red-contrib-pubnub
-#npm install node-red-contrib-ifttt
-#npm install node-red-contrib-kafka-node
-#npm install node-red-contrib-web-worldmap
-#npm install node-red-dashboard
 
   grafana:
     image: grafana/grafana
@@ -94,3 +89,29 @@ services:
     ports:
       - 9092:9092
     restart: unless-stopped
+
+# https://devopsheaven.com/letsencrypt/devops/docker/nginx/https/www/seo/2017/09/01/letsencrypt-certificates-nginx.html
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./configuration/nginx/html:/usr/share/nginx/html:ro
+
+# https://github.com/istepanov/docker-pg_dump
+# https://devopsheaven.com/postgresql/pg_dump/databases/docker/backup/2017/09/10/backup-postgresql-database-using-docker.html
+# TODO pgdump:
+
+# https://hub.docker.com/r/superitman/fail2ban/
+# TODO fail2ban:
+
+
+# https://hub.docker.com/r/diouxx/glpi/
+# TODO glpi:
+  glpi:
+    image: diouxx/glpi
+    ports:
+      - 2080:80
+    #volumes:
+    #  - ./configuration/nginx/html:/usr/share/nginx/html:ro
+    # link: yourdatabase:mysql

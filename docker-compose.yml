@@ -19,12 +19,12 @@ services:
       - 1700:1700/udp
     volumes:
       - ./configuration/lora-gateway-bridge:/etc/lora-gateway-bridge
-  
+
   geoserver:
     image: loraserver/lora-geo-server:2
     volumes:
       - ./configuration/lora-geo-server:/etc/lora-geo-server
-  
+
   postgresql:
     image: postgres:9.6-alpine
     volumes:
@@ -38,5 +38,9 @@ services:
 
   mosquitto:
     image: eclipse-mosquitto
+#    volumes:
+#       - ./configuration/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
     ports:
       - 1883:1883
+#      - 8883:8883
+#      - 9001:9001
