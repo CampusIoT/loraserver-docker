@@ -1,0 +1,94 @@
+version: "2"
+
+services:
+  pgadmin:
+    links:
+      - postgresql:postgres
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: adming@campusiot.org
+      PGADMIN_DEFAULT_PASSWORD: SuperSecret
+    volumes:
+       - ./configuration/postgresql/pgadmin:/root/.pgadmin
+    ports:
+      - 3080:80
+    restart: unless-stopped
+
+  influxdb:
+    image: influxdb
+    volumes:
+       - ./configuration/influxdb:/var/lib/influxdb
+    ports:
+      - 8086:8086
+      - 8083:8083
+    restart: unless-stopped
+
+  nodered:
+    image: nodered/node-red-docker
+    links:
+      - influxdb:influxdb
+    environment:
+      NODE_OPTIONS: --max_old_space_size=128
+      FLOWS: flow.json
+    volumes:
+       - ./configuration/nodered:/data
+    ports:
+      - 1880:1880
+    restart: unless-stopped
+#npm install node-red-contrib-influxdb
+#npm install node-red-node-mongodb
+#npm install node-red-contrib-pubnub
+#npm install node-red-contrib-ifttt
+#npm install node-red-contrib-kafka-node
+#npm install node-red-contrib-web-worldmap
+#npm install node-red-dashboard
+
+  grafana:
+    image: grafana/grafana
+    links:
+      - influxdb:influxdb
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: SuperSecret
+#    volumes:
+#       - ./configuration/grafana:/data
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+
+  chronograf:
+    image: chronograf
+    links:
+      - influxdb:influxdb
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: SuperSecret
+      FLOWS: flow.json
+    volumes:
+       - ./configuration/chronograf:/var/lib/chronograf
+    ports:
+      - 8888:8888
+    restart: unless-stopped
+
+  telegraf:
+    image: telegraf
+    links:
+      - influxdb:influxdb
+    volumes:
+       - ./configuration/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+       - ./work/telegraf:/work
+    restart: unless-stopped
+
+  kapacitor:
+    image: kapacitor
+    links:
+      - influxdb:influxdb
+    environment:
+      KAPACITOR_HOSTNAME: kapacitor
+      KAPACITOR_LOGGING_LEVEL: INFO
+      #KAPACITOR_REPORTING_ENABLED: false
+      KAPACITOR_INFLUXDB_0_URLS_0: http://loraserver-docker_influxdb_1:8086
+    volumes:
+       - ./work/kapacitor:/var/lib/kapacitor
+       - ./configuration/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+    ports:
+      - 9092:9092
+    restart: unless-stopped
