@@ -18,7 +18,7 @@ services:
     image: influxdb
     volumes:
        - ./configuration/influxdb:/var/lib/influxdb
-       - ./work/influxdb:/
+       - ./data/influxdb:/
     ports:
       - 8086:8086
       - 8083:8083
@@ -76,7 +76,7 @@ services:
       - influxdb:influxdb
     volumes:
        - ./configuration/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-       - ./work/telegraf:/work
+       - ./data/telegraf:/data
     restart: unless-stopped
 
   kapacitor:
@@ -89,8 +89,8 @@ services:
       #KAPACITOR_REPORTING_ENABLED: false
       KAPACITOR_INFLUXDB_0_URLS_0: http://loraserver-docker_influxdb_1:8086
     volumes:
-       - ./work/kapacitor:/var/lib/kapacitor
        - ./configuration/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+       - ./data/kapacitor:/var/lib/kapacitor
     ports:
       - 9092:9092
     restart: unless-stopped

@@ -9,6 +9,11 @@
 * chronograf
 * kapacitor
 
+# TODO List
+* pgdump (cron)
+* nginx with letsencryt
+* nodered plugins
+
 ## Run the composition
 docker-compose -f docker-compose.yml -f extension.yml up
 
