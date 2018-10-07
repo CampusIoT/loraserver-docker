@@ -14,7 +14,7 @@
 * nginx with letsencryt
 * nodered plugins
 * fail2ban
-* glpi
+* glpi (with mysql)
 
 ## Run the composition
 docker-compose -f docker-compose.yml -f extension.yml up
