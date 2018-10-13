@@ -1,0 +1,53 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+# From https://github.com/DiouxX/docker-glpi/blob/master/docker-compose.yml
+version: "2"
+
+services:
+#Mysql Persitence Data
+  mysql-data:
+    image: busybox
+    container_name: mysql-data
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+#Mysql Container
+  mysql:
+    image: mysql:5.7.23
+    container_name: mysql
+    hostname: mysql
+    volumes_from:
+      - mysql-data
+    env_file:
+      - ./configuration/glpi/mysql.env
+
+#GLPI Pesitence Data
+  glpi-data:
+    image: busybox
+    container_name: glpi-data
+    volumes:
+      - ./data/glpi/html/glpi:/var/www/html/glpi
+
+#GLPI Container
+  glpi:
+    image: diouxx/glpi
+    container_name : glpi
+    hostname: glpi
+    ports:
+      - 2080:80
+    links:
+      - mysql:mysql
+    volumes_from:
+      - glpi-data
+#    volumes:
+#      - /etc/timezone:/etc/timezone:ro
+#      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TIMEZONE=Europe/Brussels
+    restart: always
+
+
+# TODO add fail2ban container for glpi
+
+# TODO add network campusiot-glpi

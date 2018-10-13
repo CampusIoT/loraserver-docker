@@ -1,0 +1,37 @@
+# ACL for CampusIoT
+
+user 0
+topic readwrite lora/#
+
+user monitor
+topic read lora/#
+
+user networkserver
+topic write lora/#
+
+user 9999
+topic read lora/9999/#
+
+user 10000
+topic read lora/10000/#
+
+user 10004
+topic read lora/10004/#
+
+user 10005
+topic read lora/10005/#
+
+user 10007
+topic read lora/10007/#
+
+user 10008
+topic read lora/10008/#
+
+user 10009
+topic read lora/10009/#
+
+user 10010
+topic read lora/10010/#
+
+user 10011
+topic read lora/10011/#
