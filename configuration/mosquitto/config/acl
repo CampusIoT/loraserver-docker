@@ -1,9 +1,5 @@
 # ACL for CampusIoT
 
-# TODO use patternss
-pattern readwrite gateway/%u/#
-pattern readwrite application/%u/#
-
 user admin
 topic readwrite #
 
@@ -12,3 +8,7 @@ topic readwrite gateway/#
 
 user loraappserver
 topic readwrite application/#
+
+pattern readwrite gateway/%u/#
+
+pattern readwrite application/%u/#
