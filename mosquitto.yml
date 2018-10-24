@@ -5,7 +5,10 @@ version: "2"
 
 services:
   mosquitto:
-    image: eclipse-mosquitto
+    build:
+      context: ./docker/mosquitto
+    image: campusiot/mosquitto:latest
+#    image: eclipse-mosquitto
 #    environment:
 #      PGID: campusiot
 #      PUID: campusiot
