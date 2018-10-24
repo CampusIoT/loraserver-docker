@@ -3,11 +3,13 @@
 # Copyright (C) CampusIoT,  - All Rights Reserved
 # Written by CampusIoT Dev Team, 2016-2018
 
-sudo apt update
-sudo apt install -y mosquitto mosquitto-clients
-sudo service mosquitto stop
-sudo service mosquitto status
-
+if ! [ -x "$(command -v mosquitto_passwd)" ]; then
+  echo 'mosquitto_passwd is not installed. Installing mosquitto ...'
+  sudo apt update
+  sudo apt install -y mosquitto mosquitto-clients
+  sudo service mosquitto stop
+  sudo service mosquitto status
+fi
 
 plainpasswdcsv=plain_passwd.csv
 passwordfile=passwd
