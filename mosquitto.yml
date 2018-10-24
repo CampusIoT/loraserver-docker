@@ -6,13 +6,12 @@ version: "2"
 services:
   mosquitto:
     image: eclipse-mosquitto
-    environment:
-      PGID: campusiot
-      PUID: campusiot
+#    environment:
+#      PGID: campusiot
+#      PUID: campusiot
     volumes:
        - ./configuration/mosquitto/config/:/mosquitto/config/
        - ./configuration/mosquitto/certs/:/etc/mosquitto/certs/
-       - ./data/mosquitto:/var/log/mosquitto
     ports:
       - 1883:1883 # Plain MQTT
       - 8883:8883 # MQTT over TLS/SSL

@@ -38,18 +38,13 @@ services:
     image: redis:4-alpine
     volumes:
       - ./data/redis:/data
-
+      
   mosquitto:
-    image: eclipse-mosquitto
-    environment:
-      PGID: campusiot
-      PUID: campusiot
-    volumes:
-       - ./configuration/mosquitto/config/:/mosquitto/config/
-       - ./configuration/mosquitto/certs/:/etc/mosquitto/certs/
-       - ./data/mosquitto:/var/log/mosquitto
-    ports:
-      - 1883:1883 # Plain MQTT
-      - 8883:8883 # MQTT over TLS/SSL
-      - 9001:9001 # Plain WebSockets
-      - 8081:9883 # WebSockets over TLS/SSL
+    extends:
+      file: mosquitto.yml
+      service: mosquitto
+
+#  mosquitto:
+#    image: eclipse-mosquitto
+#    ports:
+#      - 1883:1883 # Plain MQTT

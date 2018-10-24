@@ -15,7 +15,8 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out s
 The certificates must be the same on all the instances of mosquitto
 
 Check the certificate with
-openssl s_client -connect lora.campusiot.imag.fr:8883 -CAfile ~/ca.crt
+openssl s_client -connect lora.campusiot.imag.fr:8883 -CAfile ~/configuration/mosquitto/cert/ca.crt
+openssl s_client -connect lora.campusiot.imag.fr:9883 -CAfile ~/configuration/mosquitto/cert/ca.crt
 
 openssl x509 -in ca.crt -text
 openssl x509 -in server.crt -text
@@ -38,13 +39,13 @@ CERT_DIR=certs
 
 USERID=9999
 PASSWORD=__MAIN_ADMIN_TOKEN__
-mosquitto_sub -d -h $BROKER -t "xnet/$USERID/#" -u $USERID -P $PASSWORD -p 8883 --tls-version tlsv1.2  --insecure --cafile $CERT_DIR/ca.crt
+mosquitto_sub -d -h $BROKER -t "lora/$USERID/#" -u $USERID -P $PASSWORD -p 8883 --tls-version tlsv1.2  --insecure --cafile $CERT_DIR/ca.crt
 
 ADMIN_USERID=0
 ADMIN_PASSWORD=__MAIN_ADMIN_TOKEN__
-mosquitto_sub -d -h $BROKER -t "xnet/#" -u $ADMIN_USERID -P $ADMIN_PASSWORD -p 8883 --tls-version tlsv1.2  --insecure --cafile $CERT_DIR/ca.crt
-mosquitto_sub -d -h $BROKER -t "xnet/#" -u $ADMIN_USERID -P $ADMIN_PASSWORD
-# mosquitto_sub -d -h $BROKER -t "xnet/#" --> should fail
+mosquitto_sub -d -h $BROKER -t "lora/#" -u $ADMIN_USERID -P $ADMIN_PASSWORD -p 8883 --tls-version tlsv1.2  --insecure --cafile $CERT_DIR/ca.crt
+mosquitto_sub -d -h $BROKER -t "lora/#" -u $ADMIN_USERID -P $ADMIN_PASSWORD
+# mosquitto_sub -d -h $BROKER -t "lora/#" --> should fail
 
 
 Term 2 (MQTT Publisher : ie the Network Server)
@@ -52,4 +53,4 @@ BROKER=mqtt01.__DOMAIN_NAME__
 BROKER=mqtt02.__DOMAIN_NAME__
 CERT_DIR=certs
 
-mosquitto_pub -d -h $BROKER -t "xnet/$USERID/1234567812345678" -m  '{ "deveui":"1234567812345678","frametype":"dtup_fake","payload":"1234"}'
+mosquitto_pub -d -h $BROKER -t "lora/$USERID/1234567812345678" -m  '{ "deveui":"1234567812345678","frametype":"dtup_fake","payload":"1234"}'
