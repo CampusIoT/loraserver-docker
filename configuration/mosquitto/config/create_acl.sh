@@ -17,20 +17,20 @@ do
   then
     echo "" >> $aclfile
     echo "user 0" >> $aclfile
-    echo "topic readwrite xnet/#" >> $aclfile
+    echo "topic readwrite application/#" >> $aclfile
 
     echo "" >> $aclfile
     echo "user monitor" >> $aclfile
-    echo "topic read xnet/#" >> $aclfile
+    echo "topic read application/#" >> $aclfile
 
     echo "" >> $aclfile
     echo "user networkserver" >> $aclfile
-    echo "topic write xnet/#" >> $aclfile
+    echo "topic write application/#" >> $aclfile
 
   else
     echo "" >> $aclfile
     echo "user ${username}" >> $aclfile
-    echo "topic read xnet/${username}/#" >> $aclfile
+    echo "topic read application/${username}/#" >> $aclfile
   fi
 done < $plainpasswdcsv
 IFS=$OLDIFS
