@@ -33,9 +33,11 @@ set_ufw_machine() {
   sudo ufw allow 443/tcp
   sudo ufw allow 8883/tcp
 
-  #
+  # Gateway bridge
   sudo ufw allow 1700/udp
 
+  # Gateway manager
+  sudo ufw allow 2222/tcp
 
   # Plain MQTT
   #sudo ufw allow 1883/tcp
