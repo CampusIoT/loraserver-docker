@@ -9,6 +9,28 @@ topic readwrite gateway/#
 user loraappserver
 topic readwrite application/#
 
-pattern readwrite gateway/%u/#
+user loragatewaybridge
+topic readwrite gateway/#
 
-pattern readwrite application/%u/#
+user gwabcdef1234567890
+topic readwrite gateway/abcdef1234567890/#
+
+user gwabcdef1234567891
+topic readwrite gateway/abcdef1234567891/#
+
+user gwabcdef1234567893
+topic readwrite gateway/abcdef1234567893/#
+
+user app1
+topic readwrite application/1/#
+
+user app2
+topic readwrite application/2/#
+
+user app3
+topic readwrite application/3/#
+
+
+#pattern readwrite gateway/%u/#
+
+#pattern readwrite application/%u/#
