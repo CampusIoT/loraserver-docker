@@ -1,8 +1,8 @@
 {
-  "id": "mqtt-logger-__INSTANCE_ID__",
-  "name": "MQTT Logger #__INSTANCE_ID__",
+  "id": "mqtt-logger-1",
+  "name": "MQTT Logger #1",
 
-  "env": "__CLUSTER_NAME__",
+  "env": "CampusIoT",
 
   "loglevel": {
     "error" : true,
@@ -12,13 +12,13 @@
 
   "mqtt": [
      {
-      "name" : "MQTT 1 __CLUSTER_NAME__",
+      "name" : "MQTT 1 CampusIoT",
       "mqttClientUrl": "mqtt://mqtt-1",
       "mqttClientIdPrefix": "campusiot",
       "mqttTopic": "#",
       "mqttOptions": {
         "username": "0",
-        "password": "__MQTT_ADMIN_PASSWORD__",
+        "password": "__SUPER_SECRET_TO_CHANGE__",
         "keepalive": 60,
         "reconnectPeriod": 10000
       }

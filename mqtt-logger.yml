@@ -6,7 +6,7 @@ services:
       context: ./docker/mqtt-logger
     image: campusiot/mqtt-logger:latest
 #    links:
-#      - mqtt:moquitto
+#      - mqtt-1:moquitto
     volumes:
       - ./data/mqtt-logger/msg.log:/usr/src/app/msg.log:rw
 #       - ./configuration/mqtt-logger/settings.json:/usr/src/app/settings.json:ro
