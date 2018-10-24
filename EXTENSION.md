@@ -4,15 +4,16 @@
 * pgadmin
 * influxdb
 * telegraf
-* nodered
+* nodered (with plugins and flow)
 * grafana
 * chronograf
 * kapacitor
+* mqtt-logger
+* gateway-manager
 
 # TODO List
 * pgdump (cron) see https://github.com/istepanov/docker-pg_dump
 * nginx with letsencrypt
-* nodered plugins
 * fail2ban
 * glpi (with mysql)
 
