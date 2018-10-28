@@ -2,8 +2,6 @@ version: "2"
 
 services:
   mqtt-logger:
-    build:
-      context: ./docker/mqtt-logger
     image: campusiot/mqtt-logger:latest
 #    links:
 #      - mqtt-1:moquitto
