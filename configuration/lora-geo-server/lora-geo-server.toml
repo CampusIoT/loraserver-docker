@@ -9,4 +9,4 @@ name="collos"
 #
 # This key can be retrieved after creating a Collos account at:
 # http://preview.collos.org/
-subscription_key=""
+subscription_key="__MY__SECRET_COLLOS_KEY__"

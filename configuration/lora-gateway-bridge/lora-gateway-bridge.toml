@@ -3,5 +3,5 @@
 
 [backend.mqtt]
 server="tcp://mosquitto:1883"
-username=""
-password=""
+username="lora-gateway-bridge"
+password="__SUPER_SECRET_TO_CHANGE__"
