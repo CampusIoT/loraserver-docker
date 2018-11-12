@@ -15,12 +15,14 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out s
 The certificates must be the same on all the instances of mosquitto
 
 Check the certificate with
-openssl s_client -connect lora.campusiot.imag.fr:8883 -CAfile ~/configuration/mosquitto/cert/ca.crt
-openssl s_client -connect lora.campusiot.imag.fr:9883 -CAfile ~/configuration/mosquitto/cert/ca.crt
+openssl s_client -connect lora.campusiot.imag.fr:8883 -CAfile configuration/mosquitto/certs/ca.crt
+openssl s_client -connect lora.campusiot.imag.fr:9883 -CAfile configuration/mosquitto/certs/ca.crt
+openssl s_client -connect localhost:8883 -CAfile configuration/mosquitto/certs/ca.crt
+openssl s_client -connect localhost:9883 -CAfile configuration/mosquitto/certs/ca.crt
 
-openssl x509 -in ~/configuration/mosquitto/ca.crt -text
-openssl x509 -in ~/configuration/mosquitto/server.crt -text
-openssl rsa -in ~/configuration/mosquitto/server.key -text
+openssl x509 -in configuration/mosquitto/certs/ca.crt -text
+openssl x509 -in configuration/mosquitto/certs/server.crt -text
+openssl rsa -in configuration/mosquitto/certs/server.key -text
 
 Remark:
 The following command lines may be necessary !

@@ -1,7 +1,8 @@
 admin,__SUPER_SECRET_TO_CHANGE__
 loraserver,__SUPER_SECRET_TO_CHANGE__
-loraappserver,__SUPER_SECRET_TO_CHANGE__
-loragatewaybridge,__SUPER_SECRET_TO_CHANGE__
+lora-app-server,__SUPER_SECRET_TO_CHANGE__
+lora-gateway-bridge,__SUPER_SECRET_TO_CHANGE__
+mqtt-logger,__SUPER_SECRET_TO_CHANGE__
 gwabcdef1234567890,__SUPER_SECRET_TO_CHANGE__
 gwabcdef1234567891,__SUPER_SECRET_TO_CHANGE__
 gwabcdef1234567893,__SUPER_SECRET_TO_CHANGE__
