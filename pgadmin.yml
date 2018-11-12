@@ -1,0 +1,19 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+# SMTP server for sending emails
+
+version: '2'
+services:
+  pgadmin:
+    links:
+      - postgresql:postgres
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: adming@campusiot.org
+      PGADMIN_DEFAULT_PASSWORD: SUPER_SECRET_TO_CHANGE
+    volumes:
+       - ./configuration/postgresql/pgadmin:/root/.pgadmin
+    ports:
+      - 3080:80
+    restart: unless-stopped

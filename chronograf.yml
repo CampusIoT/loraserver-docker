@@ -1,0 +1,18 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+  chronograf:
+    image: chronograf
+    links:
+      - influxdb:influxdb
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: SUPER_SECRET_TO_CHANGE
+      FLOWS: flow.json
+    volumes:
+       - ./data/chronograf:/var/lib/chronograf
+    ports:
+      - 8888:8888
+    restart: unless-stopped

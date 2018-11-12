@@ -1,0 +1,30 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+# RabbitMq
+# https://github.com/TheThingsNetwork/rabbitmq/blob/master/docker-compose.yml
+version: '3'
+services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    restart: unless-stopped
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SUPER_COOKIE_TO_CHANGE"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "SUPER_SECRET_TO_CHANGE"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+      - "5671:5671"
+      - "5672:5672"
+      - "127.0.0.1:4369:4369"
+      - "127.0.0.1:15671:15671"
+      - "127.0.0.1:15672:15672"
+      #- "15672:15672"
+    labels:
+      NAME: "rabbitmq"
+    #volumes:
+    #  - "./configuration/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+    # - "./configuration/rabbitmq/config:/etc/rabbitmq/rabbitmq.config:ro"
+    # - "./configuration/rabbitmq/autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"

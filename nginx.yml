@@ -1,0 +1,13 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+# https://devopsheaven.com/letsencrypt/devops/docker/nginx/https/www/seo/2017/09/01/letsencrypt-certificates-nginx.html
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./configuration/nginx/html:/usr/share/nginx/html:ro

@@ -1,0 +1,14 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+  telegraf:
+    image: telegraf
+    links:
+      - influxdb:influxdb
+    volumes:
+       - ./configuration/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+       - ./data/telegraf:/data
+    restart: unless-stopped

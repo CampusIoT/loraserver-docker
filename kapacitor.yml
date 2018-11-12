@@ -1,0 +1,22 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+# http://docs.grafana.org/installation/docker/
+  kapacitor:
+    image: kapacitor
+    links:
+      - influxdb:influxdb
+    environment:
+      KAPACITOR_HOSTNAME: kapacitor
+      KAPACITOR_LOGGING_LEVEL: INFO
+      #KAPACITOR_REPORTING_ENABLED: false
+      KAPACITOR_INFLUXDB_0_URLS_0: http://loraserver-docker_influxdb_1:8086
+    volumes:
+       - ./configuration/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+       - ./data/kapacitor:/var/lib/kapacitor
+    ports:
+      - 9092:9092
+    restart: unless-stopped

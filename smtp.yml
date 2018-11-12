@@ -1,0 +1,13 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+# SMTP server for sending emails
+
+version: '2'
+services:
+  smtp:
+    image: djfarrelly/maildev
+    ports:
+      - 1080:80
+      - 25:25
+    restart: unless-stopped

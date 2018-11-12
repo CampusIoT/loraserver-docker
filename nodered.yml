@@ -1,0 +1,21 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+  nodered:
+    build:
+      context: ./docker/nodered
+    image: campusiot/nodered:latest
+    #image: nodered/node-red-docker
+    links:
+      - influxdb:influxdb
+    environment:
+      NODE_OPTIONS: --max_old_space_size=128
+      FLOWS: flow.json
+    volumes:
+       - ./configuration/nodered:/data
+    ports:
+      - 1880:1880
+    restart: unless-stopped
