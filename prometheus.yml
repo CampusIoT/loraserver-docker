@@ -1,0 +1,15 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+  # For lora-gateway-bridge metrics
+  prometheus:
+    image: quay.io/prometheus/prometheus
+#    volumes:
+#       - ./configuration/prometheus
+#       - ./data/prometheus
+    ports:
+      - 9090:9090
+    restart: unless-stopped
