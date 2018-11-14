@@ -1,0 +1,27 @@
+{
+  "id": "mqtt-logger-1",
+  "name": "MQTT Logger #1",
+
+  "env": "CampusIoT",
+
+  "loglevel": {
+    "error" : true,
+    "info" : false,
+    "debug" : false
+  },
+
+  "mqtt": [
+     {
+      "name" : "MQTT 1 CampusIoT",
+      "mqttClientUrl": "mqtt://mosquitto",
+      "mqttClientIdPrefix": "mqtt-logger-1",
+      "mqttTopic": "#",
+      "mqttOptions": {
+        "username": "mqtt-logger",
+        "password": "__SUPER_SECRET_TO_CHANGE__",
+        "keepalive": 60,
+        "reconnectPeriod": 10000
+      }
+    }
+  ]
+}
