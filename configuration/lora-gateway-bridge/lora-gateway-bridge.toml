@@ -2,6 +2,22 @@
 # configuration example and documentation.
 
 [backend.mqtt]
-server="tcp://mosquitto:1883"
-username="lora-gateway-bridge"
-password="__SUPER_SECRET_TO_CHANGE__"
+  server="tcp://mosquitto:1883"
+  username="lora-gateway-bridge"
+  password="__SUPER_SECRET_TO_CHANGE__"
+
+
+# Metrics configuration.
+[metrics]
+
+  # Metrics stored in Prometheus.
+  #
+  # These metrics expose information about the state of the LoRa Gateway Bridge
+  # instance like number of messages processed, number of function calls, etc.
+  [metrics.prometheus]
+  # Expose Prometheus metrics endpoint.
+  endpoint_enabled=false
+
+  # The ip:port to bind the Prometheus metrics server to for serving the
+  # metrics endpoint.
+  bind=""
