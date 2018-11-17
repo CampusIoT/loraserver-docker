@@ -7,7 +7,7 @@ services:
 
   postgres-backup-as:
     image: annixa/docker-pg_dump
-    container_name: postgres-backup
+    container_name: postgres-backup-as
     #links:
     #  - postgresql:db # Maps postgres as "db"
     environment:
@@ -24,7 +24,7 @@ services:
 
   postgres-backup-ns:
     image: annixa/docker-pg_dump
-    container_name: postgres-backup
+    container_name: postgres-backup-ns
     #links:
     #  - postgresql:db # Maps postgres as "db"
     environment:
