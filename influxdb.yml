@@ -8,9 +8,9 @@ services:
     image: influxdb
     environment:
       INFLUXDB_ADMIN_USER: admin
-      INFLUXDB_ADMIN_PASSWORD: SUPER_SECRET_TO_CHANGE
+      INFLUXDB_ADMIN_PASSWORD: __SUPER_SECRET_TO_CHANGE__
       INFLUXDB_USER: campusiot
-      INFLUXDB_USER_PASSWORD: SUPER_SECRET_TO_CHANGE
+      INFLUXDB_USER_PASSWORD: __SUPER_SECRET_TO_CHANGE__
     volumes:
       # If the Docker image finds any files with the extensions .sh or .iql inside of the /docker-entrypoint-initdb.d folder, it will execute them. The order they are executed in is determined by the shell. This is usually alphabetical order.
        - ./configuration/influxdb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
