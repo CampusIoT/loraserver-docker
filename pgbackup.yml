@@ -1,6 +1,8 @@
 # Copyright (C) CampusIoT,  - All Rights Reserved
 # Written by CampusIoT Dev Team, 2016-2018
 
+# TODO rsync of the ./backups/postgresql directory on a remote host (ie https://hub.docker.com/r/apnar/rsync-server/)
+
 version: "2"
 
 services:
