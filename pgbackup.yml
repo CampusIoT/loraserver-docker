@@ -1,0 +1,44 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
+version: "2"
+
+services:
+
+  postgres-backup-as:
+    image: annixa/docker-pg_dump
+    container_name: postgres-backup
+    #links:
+    #  - postgresql:db # Maps postgres as "db"
+    environment:
+      - PGUSER=loraserver_as
+      - PGPASSWORD=loraserver_as
+      - CRON_SCHEDULE=0,15,30,45 * * * * # Every 15 minutes
+      - DELETE_OLDER_THAN=10080 # ten days : Optionally delete files older than $DELETE_OLDER_THAN minutes.
+      - PGDB=loraserver_as # The name of the database to dump
+      - PGHOST=loraserver-docker_postgresql_1 # The hostname of the PostgreSQL database to dump
+      - PREFIX=as
+    volumes:
+      - ./backups/postgresql:/dump
+    command: dump-cron
+
+  postgres-backup-ns:
+    image: annixa/docker-pg_dump
+    container_name: postgres-backup
+    #links:
+    #  - postgresql:db # Maps postgres as "db"
+    environment:
+      - PGUSER=loraserver_ns
+      - PGPASSWORD=loraserver_ns
+      - CRON_SCHEDULE=1,16,31,46 * * * * # Every 15 minutes
+      - DELETE_OLDER_THAN=10080 # ten days : Optionally delete files older than $DELETE_OLDER_THAN minutes.
+      - PGDB=loraserver_ns # The name of the database to dump
+      - PGHOST=loraserver-docker_postgresql_1 # The hostname of the PostgreSQL database to dump
+      - PREFIX=ns
+    volumes:
+      - ./backups/postgresql:/dump
+    command: dump-cron
+
+#networks:
+#    loraserver-docker_default:
+#        driver: bridge
