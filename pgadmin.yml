@@ -13,7 +13,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: adming@campusiot.org
       PGADMIN_DEFAULT_PASSWORD: SUPER_SECRET_TO_CHANGE
     volumes:
-       - ./configuration/postgresql/pgadmin:/root/.pgadmin
+       - ./configuration/pgadmin:/root/.pgadmin
     ports:
       - 3080:80
     restart: unless-stopped
