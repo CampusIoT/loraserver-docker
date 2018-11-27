@@ -28,12 +28,10 @@ set_ufw_machine() {
   sudo ufw allow from fe80::1
 
   # HTTP port
-  # Web (80 --> 8080)
   sudo ufw allow 80/tcp
   sudo ufw allow 443/tcp
-  sudo ufw allow 8883/tcp
 
-  # Gateway bridge
+  # Gateway bridge (will be removed soon)
   sudo ufw allow 1700/udp
 
   # Gateway manager
