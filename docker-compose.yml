@@ -12,7 +12,7 @@ services:
   appserver:
     image: loraserver/lora-app-server:2
     ports:
-      - 80:8080
+      - 443:8080
     volumes:
       - ./configuration/lora-app-server:/etc/lora-app-server
 
@@ -38,13 +38,23 @@ services:
     image: redis:4-alpine
     volumes:
       - ./data/redis:/data
-      
+
   mosquitto:
     extends:
       file: mosquitto.yml
       service: mosquitto
 
-#  mosquitto:
-#    image: eclipse-mosquitto
-#    ports:
-#      - 1883:1883 # Plain MQTT
+  postgres-backup-ns:
+    extends:
+      file: pgbackup.yml
+      service: postgres-backup-ns
+
+  postgres-backup-as:
+    extends:
+      file: pgbackup.yml
+      service: postgres-backup-as
+
+  mqtt-logger:
+    extends:
+      file: mqtt-logger.yml
+      service: mqtt-logger

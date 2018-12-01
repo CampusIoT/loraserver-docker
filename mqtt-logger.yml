@@ -1,10 +1,13 @@
+# Copyright (C) CampusIoT,  - All Rights Reserved
+# Written by CampusIoT Dev Team, 2016-2018
+
 version: "2"
 
 services:
   mqtt-logger:
     image: campusiot/mqtt-logger:latest
-#    links:
-#      - mqtt-1:moquitto
+    links:
+      - moquitto:moquitto
     volumes:
       - ./data/mqtt-logger/msg.log:/usr/src/app/msg.log:rw
       - ./configuration/mqtt-logger/settings.json:/usr/src/app/settings.json:ro
