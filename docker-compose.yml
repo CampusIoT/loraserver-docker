@@ -62,3 +62,5 @@ services:
     extends:
       file: mqtt-logger.yml
       service: mqtt-logger
+    links:
+      - moquitto:moquitto
