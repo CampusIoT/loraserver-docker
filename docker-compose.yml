@@ -63,4 +63,4 @@ services:
       file: mqtt-logger.yml
       service: mqtt-logger
     links:
-      - moquitto:moquitto
+      - mosquitto:mosquitto
