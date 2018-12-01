@@ -48,11 +48,15 @@ services:
     extends:
       file: pgbackup.yml
       service: postgres-backup-ns
+    links:
+      - postgresql:db # Maps postgres as "db"
 
   postgres-backup-as:
     extends:
       file: pgbackup.yml
       service: postgres-backup-as
+    links:
+      - postgresql:db # Maps postgres as "db"
 
   mqtt-logger:
     extends:
