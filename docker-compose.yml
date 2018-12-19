@@ -64,3 +64,8 @@ services:
       service: mqtt-logger
     links:
       - mosquitto:mosquitto
+
+  influxdb:
+    extends:
+      file: influxdb.yml
+      service: influxdb
