@@ -3,13 +3,16 @@
 user admin
 topic readwrite #
 
+user mqtt-logger
+topic read #
+
 user loraserver
 topic readwrite gateway/#
 
-user loraappserver
+user lora-app-server
 topic readwrite application/#
 
-user loragatewaybridge
+user lora-gateway-bridge
 topic readwrite gateway/#
 
 user gwabcdef1234567890
@@ -21,15 +24,14 @@ topic readwrite gateway/abcdef1234567891/#
 user gwabcdef1234567893
 topic readwrite gateway/abcdef1234567893/#
 
-user app1
+user org1
 topic readwrite application/1/#
 
-user app2
+user org2
 topic readwrite application/2/#
 
-user app3
+user org3
 topic readwrite application/3/#
-
 
 #pattern readwrite gateway/%u/#
 
