@@ -15,8 +15,8 @@ services:
     environment:
       - PGUSER=loraserver_as
       - PGPASSWORD=loraserver_as
-      - CRON_SCHEDULE=0,15,30,45 * * * * # Every 15 minutes
-      - DELETE_OLDER_THAN=10080 # ten days : Optionally delete files older than $DELETE_OLDER_THAN minutes.
+      - CRON_SCHEDULE=0,30 * * * * # Every 30 minutes
+      - DELETE_OLDER_THAN=10080 # seven days : Optionally delete files older than $DELETE_OLDER_THAN minutes.
       - PGDB=loraserver_as # The name of the database to dump
       #- PGHOST=loraserver-docker_postgresql_1 # The hostname of the PostgreSQL database to dump
       - PREFIX=as
@@ -30,8 +30,8 @@ services:
     environment:
       - PGUSER=loraserver_ns
       - PGPASSWORD=loraserver_ns
-      - CRON_SCHEDULE=1,16,31,46 * * * * # Every 15 minutes
-      - DELETE_OLDER_THAN=10080 # ten days : Optionally delete files older than $DELETE_OLDER_THAN minutes.
+      - CRON_SCHEDULE=1,31 * * * * # Every 15 minutes
+      - DELETE_OLDER_THAN=10080 # seven days : Optionally delete files older than $DELETE_OLDER_THAN minutes.
       - PGDB=loraserver_ns # The name of the database to dump
     #  - PGHOST=loraserver-docker_postgresql_1 # The hostname of the PostgreSQL database to dump
       - PREFIX=ns
