@@ -8,6 +8,8 @@ dsn="postgres://loraserver_ns:loraserver_ns@postgresql/loraserver_ns?sslmode=dis
 url="redis://redis:6379"
 
 [network_server]
+# For UGA CampusIoT net_id="C0002B"
+# Remark: the net_id can be reconfigured. DevAddr that are already allocated continue to be serve by the loraserver.
 net_id="000000"
 
 [network_server.band]
